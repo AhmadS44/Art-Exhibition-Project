@@ -2,5 +2,7 @@
 {
     public class Art
     {
+        public int ArtId { get; set; }
+
     }
 }
