@@ -11,6 +11,8 @@
         public string Country { get; set; }
         public int PhoneNumber { get; set; }
         public string Email { get; set; }
+        public ICollection<PurchaseOrder> PurchaseOrder { get; set; }
+        public ICollection<Rental> Rental { get; set; }
 
 
     }
