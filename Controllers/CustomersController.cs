@@ -10,6 +10,7 @@ using Art_Exhibition_Project.Models;
 
 namespace Art_Exhibition_Project.Controllers
 {
+   
     public class CustomersController : Controller
     {
         private readonly Context _context;
@@ -20,8 +21,48 @@ namespace Art_Exhibition_Project.Controllers
         }
 
         // GET: Customers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter,int? pageNumber)
         {
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["FirstNameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "firstname_desc" : "firstname";
+            ViewData["LastNameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "lastname_desc" : "lastname";
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+            var customers = from c in _context.Customer
+                            select c;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                customers = customers.Where(s => s.Email.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "firstname_desc":
+                    customers = customers.OrderByDescending(s => s.FirstName);
+                    break;
+                case "lastname":
+                    customers = customers.OrderBy(s => s.LastName);
+                    break;
+                case "lastname_desc":
+                    customers = customers.OrderByDescending(s => s.LastName);
+                    break;
+                default:
+                    customers = customers.OrderBy(s => s.FirstName);
+                    break;
+
+            }
+            //this is the pagination page size, so there will be 5 datas on each page//
+            int pageSize = 5;
             return View(await _context.Customer.ToListAsync());
         }
 
@@ -93,7 +134,7 @@ namespace Art_Exhibition_Project.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {
