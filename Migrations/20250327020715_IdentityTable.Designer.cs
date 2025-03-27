@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Art_Exhibition_Project.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20250304204617_IdentityTable")]
+    [Migration("20250327020715_IdentityTable")]
     partial class IdentityTable
     {
         /// <inheritdoc />
@@ -44,6 +44,14 @@ namespace Art_Exhibition_Project.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -62,6 +70,7 @@ namespace Art_Exhibition_Project.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("PhoneNumberConfirmed")
@@ -88,6 +97,218 @@ namespace Art_Exhibition_Project.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Art_Exhibition_Project.Models.Art", b =>
+                {
+                    b.Property<int>("ArtId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ArtId"));
+
+                    b.Property<int>("ArtistID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ArtId");
+
+                    b.HasIndex("ArtistID");
+
+                    b.ToTable("Art");
+                });
+
+            modelBuilder.Entity("Art_Exhibition_Project.Models.Artist", b =>
+                {
+                    b.Property<int>("ArtistID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ArtistID"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PhoneNumber")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Zip")
+                        .HasColumnType("int");
+
+                    b.HasKey("ArtistID");
+
+                    b.ToTable("Artist");
+                });
+
+            modelBuilder.Entity("Art_Exhibition_Project.Models.Customer", b =>
+                {
+                    b.Property<int>("CustomerID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerID"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PhoneNumber")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Zip")
+                        .HasColumnType("int");
+
+                    b.HasKey("CustomerID");
+
+                    b.ToTable("Customer");
+                });
+
+            modelBuilder.Entity("Art_Exhibition_Project.Models.Exhibition", b =>
+                {
+                    b.Property<int>("ExhibitionID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ExhibitionID"));
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FinishDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("GalleryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartingDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Zip")
+                        .HasColumnType("int");
+
+                    b.HasKey("ExhibitionID");
+
+                    b.ToTable("Exhibition");
+                });
+
+            modelBuilder.Entity("Art_Exhibition_Project.Models.PurchaseOrder", b =>
+                {
+                    b.Property<int>("PurchaseOrderID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PurchaseOrderID"));
+
+                    b.Property<int>("ArtID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CustomerID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("FinishDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("OrderCost")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartingDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("PurchaseOrderID");
+
+                    b.HasIndex("ArtID");
+
+                    b.HasIndex("CustomerID");
+
+                    b.ToTable("PurchaseOrder");
+                });
+
+            modelBuilder.Entity("Art_Exhibition_Project.Models.Rental", b =>
+                {
+                    b.Property<int>("RentalID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RentalID"));
+
+                    b.Property<int>("ArtID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CustomerID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RentalCost")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("RentalDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("RentalFinishDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("RentalID");
+
+                    b.HasIndex("ArtID");
+
+                    b.HasIndex("CustomerID");
+
+                    b.ToTable("Rental");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -227,6 +448,55 @@ namespace Art_Exhibition_Project.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Art_Exhibition_Project.Models.Art", b =>
+                {
+                    b.HasOne("Art_Exhibition_Project.Models.Artist", "Artist")
+                        .WithMany("Art")
+                        .HasForeignKey("ArtistID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Artist");
+                });
+
+            modelBuilder.Entity("Art_Exhibition_Project.Models.PurchaseOrder", b =>
+                {
+                    b.HasOne("Art_Exhibition_Project.Models.Art", "Art")
+                        .WithMany("PurchaseOrder")
+                        .HasForeignKey("ArtID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Art_Exhibition_Project.Models.Customer", "Customer")
+                        .WithMany("PurchaseOrder")
+                        .HasForeignKey("CustomerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Art");
+
+                    b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("Art_Exhibition_Project.Models.Rental", b =>
+                {
+                    b.HasOne("Art_Exhibition_Project.Models.Art", "Art")
+                        .WithMany("Rental")
+                        .HasForeignKey("ArtID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Art_Exhibition_Project.Models.Customer", "Customer")
+                        .WithMany("Rental")
+                        .HasForeignKey("CustomerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Art");
+
+                    b.Navigation("Customer");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -276,6 +546,25 @@ namespace Art_Exhibition_Project.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Art_Exhibition_Project.Models.Art", b =>
+                {
+                    b.Navigation("PurchaseOrder");
+
+                    b.Navigation("Rental");
+                });
+
+            modelBuilder.Entity("Art_Exhibition_Project.Models.Artist", b =>
+                {
+                    b.Navigation("Art");
+                });
+
+            modelBuilder.Entity("Art_Exhibition_Project.Models.Customer", b =>
+                {
+                    b.Navigation("PurchaseOrder");
+
+                    b.Navigation("Rental");
                 });
 #pragma warning restore 612, 618
         }

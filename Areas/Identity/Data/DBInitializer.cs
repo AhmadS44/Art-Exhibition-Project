@@ -33,25 +33,6 @@ namespace Art_Exhibition_Project.Areas.Identity.Data
             }
             context.SaveChanges();
 
-            var arts = new Art[]
-            {
-                new Art { Title = "Daniel", Price = 20, Description = "Danielpatel@gmail.com" },
-                new Art { Title = "Emily", Price = 10, Description = "emilyj@gmail.com" },
-                new Art { Title = "Sophia", Price = -10, Description = "Swilliams22@gmail.com" },
-                new Art { Title = "Ethan", Price = 20, Description = "ethanB@gmail.com" },
-                new Art { Title = "Olivia", Price = 20, Description = "oliviaDa88@gmail.com" },
-                new Art { Title = "Jacob", Price = 20, Description = "jacobMartinez22@gmail.com" },
-                new Art { Title = "Ava", Price = 20, Description = "avag9@gmail.com" },
-                new Art { Title = "William", Price = 20, Description = "williamj21@gmail.com" },
-                new Art { Title = "Isabella", Price = 20, Description = "irodriguez2@gmail.com" },
-                new Art { Title = "Liam", Price = 20, Description = "liamanderson0@gmail.com" },
-            };
-            foreach (Art a in arts)
-            {
-                context.Art.Add(a);
-            }
-            context.SaveChanges();
-            ;
 
             var artists = new Artist[]
              {
@@ -72,25 +53,27 @@ namespace Art_Exhibition_Project.Areas.Identity.Data
             }
             context.SaveChanges();
 
-
-            var exhibitions = new Exhibition[]
+            var arts = new Art[]
             {
-                new Exhibition { GalleryName = "AucklandGallery", City = "Auckland", Zip = 1021, Country = "New Zealand", StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
-                new Exhibition { GalleryName = "AucklandGallery", City = "Auckland", Zip = 0624, Country = "New Zealand", StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
-                new Exhibition { GalleryName = "AucklandGallery", City = "Christchurch", Zip = 8011, Country = "New Zealand", StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
-                new Exhibition { GalleryName = "AucklandGallery", City = "Auckland", Zip = 1024, Country = "New Zealand", StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
-                new Exhibition { GalleryName = "AucklandGallery", City = "Auckland", Zip = 1011, Country = "New Zealand", StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
-                new Exhibition { GalleryName = "AucklandGallery", City = "Auckland", Zip = 0622, Country = "New Zealand", StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
-                new Exhibition { GalleryName = "AucklandGallery", City = "Wellington", Zip = 6012, Country = "New Zealand", StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
-                new Exhibition { GalleryName = "AucklandGallery", City = "Wellington", Zip = 6011, Country = "New Zealand", StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
-                new Exhibition { GalleryName = "AucklandGallery", City = "Auckland", Zip = 1010, Country = "New Zealand", StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
-                new Exhibition { GalleryName = "AucklandGallery", City = "Auckland", Zip = 1052, Country = "New Zealand", StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
+                new Art { ArtistID = 1, Title = "Daniel", Price = 20, Description = "Danielpatel@gmail.com" },
+                new Art { ArtistID = 2,  Title = "Emily", Price = 10, Description = "emilyj@gmail.com" },
+                new Art { ArtistID = 3,  Title = "Sophia", Price = -10, Description = "Swilliams22@gmail.com" },
+                new Art { ArtistID = 4,  Title = "Ethan", Price = 20, Description = "ethanB@gmail.com" },
+                new Art { ArtistID = 5,  Title = "Olivia", Price = 20, Description = "oliviaDa88@gmail.com" },
+                new Art { ArtistID = 6,  Title = "Jacob", Price = 20, Description = "jacobMartinez22@gmail.com" },
+                new Art { ArtistID = 7, Title = "Ava", Price = 20, Description = "avag9@gmail.com" },
+                new Art { ArtistID = 8,  Title = "William", Price = 20, Description = "williamj21@gmail.com" },
+                new Art { ArtistID = 9,  Title = "Isabella", Price = 20, Description = "irodriguez2@gmail.com" },
+                new Art { ArtistID = 10,  Title = "Liam", Price = 20, Description = "liamanderson0@gmail.com" },
             };
-            foreach (Exhibition e in exhibitions)
+            foreach (Art a in arts)
             {
-                context.Exhibition.Add(e);
+                context.Art.Add(a);
             }
             context.SaveChanges();
+            ;
+
+
 
             var purchaseorders = new PurchaseOrder[]
           {
@@ -129,6 +112,25 @@ namespace Art_Exhibition_Project.Areas.Identity.Data
             foreach (Rental r in rentals)
             {
                 context.Rental.Add(r);
+            }
+            context.SaveChanges();
+
+             var exhibitions = new Exhibition[]
+            {
+                new Exhibition { GalleryName = "AucklandGallery", City = "Auckland", Zip = 1021, Country = "New Zealand", StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
+                new Exhibition { GalleryName = "AucklandGallery", City = "Auckland", Zip = 0624, Country = "New Zealand", StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
+                new Exhibition { GalleryName = "AucklandGallery", City = "Christchurch", Zip = 8011, Country = "New Zealand", StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
+                new Exhibition { GalleryName = "AucklandGallery", City = "Auckland", Zip = 1024, Country = "New Zealand", StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
+                new Exhibition { GalleryName = "AucklandGallery", City = "Auckland", Zip = 1011, Country = "New Zealand", StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
+                new Exhibition { GalleryName = "AucklandGallery", City = "Auckland", Zip = 0622, Country = "New Zealand", StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
+                new Exhibition { GalleryName = "AucklandGallery", City = "Wellington", Zip = 6012, Country = "New Zealand", StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
+                new Exhibition { GalleryName = "AucklandGallery", City = "Wellington", Zip = 6011, Country = "New Zealand", StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
+                new Exhibition { GalleryName = "AucklandGallery", City = "Auckland", Zip = 1010, Country = "New Zealand", StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
+                new Exhibition { GalleryName = "AucklandGallery", City = "Auckland", Zip = 1052, Country = "New Zealand", StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
+            };
+            foreach (Exhibition e in exhibitions)
+            {
+                context.Exhibition.Add(e);
             }
             context.SaveChanges();
 
