@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Art_Exhibition_Project.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20250327020715_IdentityTable")]
+    [Migration("20250330224138_IdentityTable")]
     partial class IdentityTable
     {
         /// <inheritdoc />

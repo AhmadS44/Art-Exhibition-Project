@@ -77,16 +77,16 @@ namespace Art_Exhibition_Project.Areas.Identity.Data
 
             var purchaseorders = new PurchaseOrder[]
           {
-              new PurchaseOrder { OrderCost = 1, OrderDate = DateTime.Parse("2004-06-11"), StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
-              new PurchaseOrder { OrderCost = 2, OrderDate = DateTime.Parse("2004-06-11"), StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
-              new PurchaseOrder { OrderCost = 3, OrderDate = DateTime.Parse("2004-06-11"), StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
-              new PurchaseOrder { OrderCost = 4, OrderDate = DateTime.Parse("2004-06-11"), StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
-              new PurchaseOrder { OrderCost = 5, OrderDate = DateTime.Parse("2004-06-11"), StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
-              new PurchaseOrder { OrderCost = 6, OrderDate = DateTime.Parse("2004-06-11"), StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
-              new PurchaseOrder { OrderCost = 7, OrderDate = DateTime.Parse("2004-06-11"), StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
-              new PurchaseOrder { OrderCost = 8, OrderDate = DateTime.Parse("2004-06-11"), StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
-              new PurchaseOrder { OrderCost = 9, OrderDate = DateTime.Parse("2004-06-11"), StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
-              new PurchaseOrder { OrderCost = 10, OrderDate = DateTime.Parse("2004-06-11"), StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
+              new PurchaseOrder { ArtID = 1, CustomerID = 1, OrderCost = 1, OrderDate = DateTime.Parse("2004-06-11"), StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
+              new PurchaseOrder { ArtID = 2, CustomerID = 2, OrderCost = 2, OrderDate = DateTime.Parse("2004-06-11"), StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
+              new PurchaseOrder { ArtID = 3, CustomerID = 3, OrderCost = 3, OrderDate = DateTime.Parse("2004-06-11"), StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
+              new PurchaseOrder { ArtID = 4, CustomerID = 4, OrderCost = 4, OrderDate = DateTime.Parse("2004-06-11"), StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
+              new PurchaseOrder { ArtID = 5, CustomerID = 5, OrderCost = 5, OrderDate = DateTime.Parse("2004-06-11"), StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
+              new PurchaseOrder { ArtID = 6, CustomerID = 6, OrderCost = 6, OrderDate = DateTime.Parse("2004-06-11"), StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
+              new PurchaseOrder { ArtID = 7, CustomerID = 7, OrderCost = 7, OrderDate = DateTime.Parse("2004-06-11"), StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
+              new PurchaseOrder { ArtID = 8, CustomerID = 8, OrderCost = 8, OrderDate = DateTime.Parse("2004-06-11"), StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
+              new PurchaseOrder { ArtID = 9, CustomerID = 9, OrderCost = 9, OrderDate = DateTime.Parse("2004-06-11"), StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
+              new PurchaseOrder { ArtID = 10, CustomerID = 10, OrderCost = 10, OrderDate = DateTime.Parse("2004-06-11"), StartingDate = DateTime.Parse("2002-06-11"), FinishDate = DateTime.Parse("2002-06-12") },
           };
             foreach (PurchaseOrder p in purchaseorders)
             {
