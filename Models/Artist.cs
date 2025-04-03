@@ -6,16 +6,16 @@ namespace Art_Exhibition_Project.Models
     {
         public int ArtistID { get; set; }
 
-        //First name has to have uppercase and limited to 10 characters//
+        //First name has to have uppercase and limited to 25 characters//
         [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
         [Required]
-        [StringLength(10)]
+        [StringLength(25)]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
         [Required]
-        [StringLength(10)]
+        [StringLength(25)]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
