@@ -62,8 +62,8 @@
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ArtistID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ArtistID">Details</a> |
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.ArtistID">Edit</a> |
+                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.ArtistID">Details</a> |
                     <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ArtistID">Delete</a>
             </td>
         </tr>

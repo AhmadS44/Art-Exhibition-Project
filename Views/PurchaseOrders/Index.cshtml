@@ -55,9 +55,9 @@
                 @Html.DisplayFor(modelItem => item.Customer.FirstName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.PurchaseOrderID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PurchaseOrderID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PurchaseOrderID">Delete</a>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.PurchaseOrderID">Edit</a> |
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.PurchaseOrderID">Details</a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.PurchaseOrderID">Delete</a>
             </td>
         </tr>
 }
