@@ -61,7 +61,7 @@ namespace Art_Exhibition_Project.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("RentalID,ArtID,CustomerID,RentalCost,RentalDate,RentalFinishDate")] Rental rental)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _context.Add(rental);
                 await _context.SaveChangesAsync();
@@ -102,7 +102,7 @@ namespace Art_Exhibition_Project.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {

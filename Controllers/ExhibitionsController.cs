@@ -56,7 +56,7 @@ namespace Art_Exhibition_Project.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ExhibitionID,GalleryName,City,Zip,Country,StartingDate,FinishDate")] Exhibition exhibition)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _context.Add(exhibition);
                 await _context.SaveChangesAsync();
@@ -93,7 +93,7 @@ namespace Art_Exhibition_Project.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {

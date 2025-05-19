@@ -61,7 +61,7 @@ namespace Art_Exhibition_Project.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("PurchaseOrderID,ArtID,CustomerID,OrderCost,OrderDate,StartingDate,FinishDate")] PurchaseOrder purchaseOrder)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _context.Add(purchaseOrder);
                 await _context.SaveChangesAsync();
@@ -102,7 +102,7 @@ namespace Art_Exhibition_Project.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {

@@ -56,7 +56,7 @@ namespace Art_Exhibition_Project.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ArtistID,FirstName,LastName,Address,City,Zip,Country,PhoneNumber")] Artist artist)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _context.Add(artist);
                 await _context.SaveChangesAsync();
