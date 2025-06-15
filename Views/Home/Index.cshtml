@@ -2,7 +2,6 @@
     ViewData["Title"] = "Home Page";
 }
 
-
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
@@ -10,11 +9,39 @@
 
 <div class="container mt-3">
     <h2>Artists</h2>
-    <p></p>
-    <div class="card" style="width:400px">
-        <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/1/16/SteveHarveyHWOFMay2013_%28cropped%29.jpg" alt="Card image" style="width:100%">
-        <div class="card-body">
-            <h4 class="card-title">Steve Harvey</h4>
-            <p class="card-text">Steve Harvey, a previous boxer knocked out mike tyson but got put down my motez mahmoud</p>
-            <a href="#" class="btn btn-primary">See Profile</a>
+    <div class="row d-flex justify-content-between">
+
+        <div class="col-md-4">
+            <div class="card h-100">
+                <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/1/16/SteveHarveyHWOFMay2013_%28cropped%29.jpg" alt="Steve Harvey" style="object-fit: cover; height: 600px;">
+                <div class="card-body">
+                    <h4 class="card-title">Steve Harvey</h4>
+                    <p class="card-text">Steve Harvey, a previous boxer knocked out Mike Tyson but got put down by Motez Mahmoud.</p>
+                    <a href="#" class="btn btn-primary">See Profile</a>
+                </div>
+            </div>
         </div>
+
+        <div class="col-md-4">
+            <div class="card h-100">
+                <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Albert_Einstein_1947.jpg/960px-Albert_Einstein_1947.jpg" alt="Albert Einstein" style="object-fit: cover; height: 600px;">
+                <div class="card-body">
+                    <h4 class="card-title">Albert Einstein</h4>
+                    <p class="card-text">Albert Einstein is the smartest artist in the entire universe.</p>
+                    <a href="#" class="btn btn-primary">See Profile</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100">
+                <img class="card-img-top" src="https://i.guim.co.uk/img/media/c8839614a8623946482a7fdeb116509ec0f8f43a/0_58_3053_1832/master/3053.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=a38ffcd0760482df2c2e4194ca5be8dc" alt="Christiano Ronaldo" style="object-fit: cover; height: 600px;">
+                <div class="card-body">
+                    <h4 class="card-title">Cristiano Ronaldo</h4>
+                    <p class="card-text">Graduated from Blue Lock Academy, the best soccer player of all time.</p>
+                    <a href="#" class="btn btn-primary">See Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
