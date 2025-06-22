@@ -11,26 +11,26 @@
     <a class="btn btn-success" asp-action="Create">Create</a>
 </p>
 
-@foreach (var item in Model) {
-       
-                <div class="col-md-4">
-                    <div class="card h-100">
-                        
-                        <div class="card-body">
-                            <h4 class="card-title">@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</h4>
-                            <p class="card-text">@Html.DisplayFor(modelItem => item.Address)</p>
-                            <p class="card-text">@Html.DisplayFor(modelItem => item.City)</p>
-                            <p class="card-text">@Html.DisplayFor(modelItem => item.Zip)</p>
-                            <p class="card-text">@Html.DisplayFor(modelItem => item.Country)</p>
-                            <p class="card-text">@Html.DisplayFor(modelItem => item.PhoneNumber)</p>
-                            <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.ArtistID">Edit</a> |
-                            <a class="btn btn-info" asp-action="Details" asp-route-id="@item.ArtistID">Details</a> |
-                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ArtistID">Delete</a>
-                            <a href="#" class="btn btn-primary">See Profile</a>
-                        </div>
-                    </div>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <!-- add margin bottom to space cards vertically -->
+            <div class="card h-100">
+                <div class="card-body">
+                    <h4 class="card-title">@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</h4>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Address)</p>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.City)</p>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Zip)</p>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Country)</p>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.PhoneNumber)</p>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.ArtistID">Edit</a> |
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.ArtistID">Details</a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ArtistID">Delete</a>
+                    <a href="#" class="btn btn-primary">See Profile</a>
                 </div>
-           
-}
-    </tbody>
-</table>
+            </div>
+        </div>
+    }
+</div>
+
