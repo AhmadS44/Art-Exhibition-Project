@@ -93,7 +93,7 @@ namespace Art_Exhibition_Project.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {
