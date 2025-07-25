@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Art_Exhibition_Project;
 using Art_Exhibition_Project.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Art_Exhibition_Project.Controllers
 {
@@ -44,6 +45,7 @@ namespace Art_Exhibition_Project.Controllers
         }
 
         // GET: Artists/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -54,6 +56,7 @@ namespace Art_Exhibition_Project.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("ArtistID,FirstName,LastName,Address,City,Zip,Country,PhoneNumber")] Artist artist)
         {
             if (!ModelState.IsValid)
@@ -66,6 +69,7 @@ namespace Art_Exhibition_Project.Controllers
         }
 
         // GET: Artists/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,6 +90,7 @@ namespace Art_Exhibition_Project.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("ArtistID,FirstName,LastName,Address,City,Zip,Country,PhoneNumber")] Artist artist)
         {
             if (id != artist.ArtistID)
@@ -117,6 +122,7 @@ namespace Art_Exhibition_Project.Controllers
         }
 
         // GET: Artists/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -133,10 +139,12 @@ namespace Art_Exhibition_Project.Controllers
 
             return View(artist);
         }
+        
 
         // POST: Artists/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var artist = await _context.Artist.FindAsync(id);

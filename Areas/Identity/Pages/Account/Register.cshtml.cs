@@ -78,7 +78,7 @@ namespace Art_Exhibition_Project.Areas.Identity.Pages.Account
 
             [Required]
             [StringLength(20, ErrorMessage = "The last name should be limited to 20 characters.")]
-            [Display(Name = "Firstname")]
+            [Display(Name = "Lastname")]
             public string LastName { get; set; }
 
             [Required]

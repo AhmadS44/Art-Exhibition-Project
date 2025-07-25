@@ -1,4 +1,8 @@
-﻿@model IEnumerable<Art_Exhibition_Project.Models.Artist>
+﻿@using Microsoft.AspNetCore.Identity
+@using Art_Exhibition_Project.Areas.Identity.Data
+@inject SignInManager<Art_Exhibition_ProjectUser> SignInManager
+@inject UserManager<Art_Exhibition_ProjectUser> UserManager
+@model IEnumerable<Art_Exhibition_Project.Models.Artist>
 
 @{
     ViewData["Title"] = "Index";
@@ -24,9 +28,13 @@
                     <p class="card-text">@Html.DisplayFor(modelItem => item.Zip)</p>
                     <p class="card-text">@Html.DisplayFor(modelItem => item.Country)</p>
                     <p class="card-text">@Html.DisplayFor(modelItem => item.PhoneNumber)</p>
-                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.ArtistID">Edit</a> |
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.ArtistID">Edit</a>
+                                 < a class= "btn btn-danger" asp - action = "Delete" asp - route - id = "@item.ArtistID" > Delete </ a >}
+                    
                     <a class="btn btn-info" asp-action="Details" asp-route-id="@item.ArtistID">Details</a> |
-                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ArtistID">Delete</a>
+                    
                     <a href="#" class="btn btn-primary">See Profile</a>
                 </div>
             </div>
