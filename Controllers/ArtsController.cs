@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Art_Exhibition_Project;
+using Art_Exhibition_Project.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Art_Exhibition_Project;
-using Art_Exhibition_Project.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Art_Exhibition_Project.Controllers
 {
@@ -46,6 +47,8 @@ namespace Art_Exhibition_Project.Controllers
         }
 
         // GET: Arts/Create
+        [Authorize]
+
         public IActionResult Create()
         {
             ViewData["ArtistID"] = new SelectList(_context.Set<Artist>(), "ArtistID", "ArtistID");
@@ -57,6 +60,7 @@ namespace Art_Exhibition_Project.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("ArtId,ArtistID,Title,Price,Description")] Art art)
         {
             if (!ModelState.IsValid)
@@ -70,6 +74,7 @@ namespace Art_Exhibition_Project.Controllers
         }
 
         // GET: Arts/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -91,6 +96,7 @@ namespace Art_Exhibition_Project.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("ArtId,ArtistID,Title,Price,Description")] Art art)
         {
             if (id != art.ArtId)
@@ -123,6 +129,7 @@ namespace Art_Exhibition_Project.Controllers
         }
 
         // GET: Arts/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -144,6 +151,7 @@ namespace Art_Exhibition_Project.Controllers
         // POST: Arts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var art = await _context.Art.FindAsync(id);

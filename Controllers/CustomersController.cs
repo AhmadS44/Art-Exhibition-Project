@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Art_Exhibition_Project;
+using Art_Exhibition_Project.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Art_Exhibition_Project;
-using Art_Exhibition_Project.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Art_Exhibition_Project.Controllers
 {
@@ -85,6 +86,7 @@ namespace Art_Exhibition_Project.Controllers
         }
 
         // GET: Customers/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -95,6 +97,7 @@ namespace Art_Exhibition_Project.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("CustomerID,FirstName,LastName,Address,City,Zip,Country,PhoneNumber,Email")] Customer customer)
         {
             if (!ModelState.IsValid)
@@ -107,6 +110,7 @@ namespace Art_Exhibition_Project.Controllers
         }
 
         // GET: Customers/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -127,6 +131,7 @@ namespace Art_Exhibition_Project.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("CustomerID,FirstName,LastName,Address,City,Zip,Country,PhoneNumber,Email")] Customer customer)
         {
             if (id != customer.CustomerID)
@@ -158,6 +163,7 @@ namespace Art_Exhibition_Project.Controllers
         }
 
         // GET: Customers/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -178,6 +184,7 @@ namespace Art_Exhibition_Project.Controllers
         // POST: Customers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var customer = await _context.Customer.FindAsync(id);

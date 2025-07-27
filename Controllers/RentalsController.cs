@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Art_Exhibition_Project;
+using Art_Exhibition_Project.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Art_Exhibition_Project;
-using Art_Exhibition_Project.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Art_Exhibition_Project.Controllers
 {
@@ -47,6 +48,7 @@ namespace Art_Exhibition_Project.Controllers
         }
 
         // GET: Rentals/Create
+        [Authorize]
         public IActionResult Create()
         {
             ViewData["ArtID"] = new SelectList(_context.Art, "ArtId", "ArtId");
@@ -59,6 +61,7 @@ namespace Art_Exhibition_Project.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("RentalID,ArtID,CustomerID,RentalCost,RentalDate,RentalFinishDate")] Rental rental)
         {
             if (!ModelState.IsValid)
@@ -73,6 +76,7 @@ namespace Art_Exhibition_Project.Controllers
         }
 
         // GET: Rentals/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -95,6 +99,7 @@ namespace Art_Exhibition_Project.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("RentalID,ArtID,CustomerID,RentalCost,RentalDate,RentalFinishDate")] Rental rental)
         {
             if (id != rental.RentalID)
@@ -128,6 +133,7 @@ namespace Art_Exhibition_Project.Controllers
         }
 
         // GET: Rentals/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -150,6 +156,7 @@ namespace Art_Exhibition_Project.Controllers
         // POST: Rentals/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var rental = await _context.Rental.FindAsync(id);
