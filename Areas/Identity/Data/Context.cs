@@ -34,9 +34,9 @@ public class Context : IdentityDbContext<Art_Exhibition_ProjectUser>
 
     public DbSet<Art_Exhibition_Project.Models.Rental> Rental { get; set; } = default!;
 }
-public class ApplicationUserEntityConfiguration : IEntityTypeConfiguration<ApplicationUser>
+public class ApplicationUserEntityConfiguration : IEntityTypeConfiguration<Art_Exhibition_ProjectUser>
 {
-        public void Configure(EntityTypeBuilder<ApplicationUser> builder)
+        public void Configure(EntityTypeBuilder<Art_Exhibition_ProjectUser> builder)
     {
         builder.Property(u => u.FirstName).HasMaxLength(20);
         builder.Property(u => u.LastName).HasMaxLength(20);
