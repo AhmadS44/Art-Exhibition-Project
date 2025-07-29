@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using Art_Exhibition_Project.Areas.Identity.Data;
 
 namespace Art_Exhibition_Project.Areas.Identity.Pages.Account
 {

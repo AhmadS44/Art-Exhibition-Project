@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Art_Exhibition_Project.Models;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Art_Exhibition_Project;
 
@@ -21,15 +22,29 @@ public class Context : IdentityDbContext<Art_Exhibition_ProjectUser>
         // Add your customizations after calling base.OnModelCreating(builder);
     }
 
-public DbSet<Art_Exhibition_Project.Models.Art> Art { get; set; } = default!;
+    public DbSet<Art_Exhibition_Project.Models.Art> Art { get; set; } = default!;
 
-public DbSet<Art_Exhibition_Project.Models.Artist> Artist { get; set; } = default!;
+    public DbSet<Art_Exhibition_Project.Models.Artist> Artist { get; set; } = default!;
 
-public DbSet<Art_Exhibition_Project.Models.Customer> Customer { get; set; } = default!;
+    public DbSet<Art_Exhibition_Project.Models.Customer> Customer { get; set; } = default!;
 
-public DbSet<Art_Exhibition_Project.Models.Exhibition> Exhibition { get; set; } = default!;
+    public DbSet<Art_Exhibition_Project.Models.Exhibition> Exhibition { get; set; } = default!;
 
-public DbSet<Art_Exhibition_Project.Models.PurchaseOrder> PurchaseOrder { get; set; } = default!;
+    public DbSet<Art_Exhibition_Project.Models.PurchaseOrder> PurchaseOrder { get; set; } = default!;
 
-public DbSet<Art_Exhibition_Project.Models.Rental> Rental { get; set; } = default!;
+    public DbSet<Art_Exhibition_Project.Models.Rental> Rental { get; set; } = default!;
 }
+public class ApplicationUserEntityConfiguration : IEntityTypeConfiguration<ApplicationUser>
+{
+        public void Configure(EntityTypeBuilder<ApplicationUser> builder)
+    {
+        builder.Property(u => u.FirstName).HasMaxLength(20);
+        builder.Property(u => u.LastName).HasMaxLength(20);
+        builder.Property(u => u.PhoneNumber).HasMaxLength(10);
+    }
+}
+
+
+
+
+
