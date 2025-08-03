@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Art_Exhibition_Project.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20250725021150_updatedUserProfile")]
-    partial class updatedUserProfile
+    [Migration("20250803235023_IdentityTable")]
+    partial class IdentityTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
