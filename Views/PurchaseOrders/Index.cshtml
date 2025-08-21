@@ -1,4 +1,8 @@
 ﻿@model IEnumerable<Art_Exhibition_Project.Models.PurchaseOrder>
+@inject SignInManager<Art_Exhibition_ProjectUser> SignInManager
+@inject UserManager<Art_Exhibition_ProjectUser> UserManager
+@using Microsoft.AspNetCore.Identity
+@using Art_Exhibition_Project.Areas.Identity.Data
 
 @{
     ViewData["Title"] = "Index";
@@ -54,11 +58,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Customer.FirstName)
             </td>
-            <td>
-                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.PurchaseOrderID">Edit</a> |
-                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.PurchaseOrderID">Details</a> |
-                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.PurchaseOrderID">Delete</a>
-            </td>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <td>
+                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.PurchaseOrderID">Edit</a> |
+                        <a class="btn btn-info" asp-action="Details" asp-route-id="@item.PurchaseOrderID">Details</a> |
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.PurchaseOrderID">Delete</a>
+                    </td>
+                }
+           
         </tr>
 }
     </tbody>
