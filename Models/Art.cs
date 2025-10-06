@@ -20,7 +20,7 @@ namespace Art_Exhibition_Project.Models
 
         //discreption of the art piece//
         [Required(ErrorMessage = "Description is required")]
-        [StringLength(150, MinimumLength = 35, ErrorMessage = "Description must be between 35 and 150 characters")]
+        [StringLength(150, MinimumLength = 5, ErrorMessage = "Description must be between 35 and 150 characters")]
         public string Description { get; set; }
         
         public Artist Artist { get; set; }
