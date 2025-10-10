@@ -55,16 +55,16 @@ namespace Art_Exhibition_Project.Areas.Identity.Data
 
             var arts = new Art[]
             {
-                new Art { ArtistID = 1, Title = "Mountains", Price = 80, Description = "A portrait of the mountains" },
-                new Art { ArtistID = 2,  Title = "Sunlight on the River", Price = 10, Description = "The sun over the river" },
-                new Art { ArtistID = 3,  Title = "Moonlight", Price = 75, Description = "The moonlight shining down" },
-                new Art { ArtistID = 4,  Title = "The beauty of nature", Price = 20, Description = "Trees of our nature" },
-                new Art { ArtistID = 5,  Title = "Our world", Price = 1500, Description = "Shows society as it is" },
-                new Art { ArtistID = 6,  Title = "The future", Price = 750, Description = "Shows what the future may be" },
-                new Art { ArtistID = 7, Title = "A masterpiece", Price = 200, Description = "A blend of colours" },
-                new Art { ArtistID = 8,  Title = "Mona Lisa", Price = 1000000, Description = "A portrait of a women" },
-                new Art { ArtistID = 9,  Title = "Davincis Piece", Price = 700, Description = "Luciousness" },
-                new Art { ArtistID = 10,  Title = "Baldie Baldie", Price = 60, Description = "The baldie himself" },
+               new Art { ArtistID = 1, Title = "Daniel", Price = 20, Description = "A portrait of the mountains" },
+                new Art { ArtistID = 2,  Title = "Emily", Price = 10, Description = "The sun over the river" },
+                new Art { ArtistID = 3,  Title = "Sophia", Price = 10, Description = "The moonlight shining down" },
+                new Art { ArtistID = 4,  Title = "Ethan", Price = 20, Description = "Trees of our nature" },
+                new Art { ArtistID = 5,  Title = "Olivia", Price = 20, Description = "Shows society as it is" },
+                new Art { ArtistID = 6,  Title = "Jacob", Price = 20, Description = "Shows what the future may be" },
+                new Art { ArtistID = 7, Title = "Ava", Price = 20, Description = "A blend of colours" },
+                new Art { ArtistID = 8,  Title = "William", Price = 20, Description = "A portrait of a women" },
+                new Art { ArtistID = 9,  Title = "Isabella", Price = 20, Description = "Luciousness" },
+                new Art { ArtistID = 10,  Title = "Liam", Price = 20, Description = "The baldie himself" },
             };
             foreach (Art a in arts)
             {
@@ -117,9 +117,9 @@ namespace Art_Exhibition_Project.Areas.Identity.Data
 
              var exhibitions = new Exhibition[]
             {
-                new Exhibition { GalleryName = "Auckland Gallery", City = "Auckland", Zip = 1400, Country = "New Zealand", StartingDate = DateTime.Parse("20025-11-11"), FinishDate = DateTime.Parse("20025-11-15") },
-                new Exhibition { GalleryName = "Auckland Gallery", City = "Auckland", Zip = 1400, Country = "New Zealand", StartingDate = DateTime.Parse("20025-12-11"), FinishDate = DateTime.Parse("20025-12-15") },
-                new Exhibition { GalleryName = "Chirstchurch Gallery", City = "Christchurch", Zip = 1011, Country = "New Zealand", StartingDate = DateTime.Parse("20025-06-08"), FinishDate = DateTime.Parse("20025-06-14") },
+                new Exhibition { GalleryName = "Auckland Gallery", City = "Auckland", Zip = 1400, Country = "New Zealand", StartingDate = DateTime.Parse("2025-11-11"), FinishDate = DateTime.Parse("2025-11-15") },
+                new Exhibition { GalleryName = "Auckland Gallery", City = "Auckland", Zip = 1400, Country = "New Zealand", StartingDate = DateTime.Parse("2025-12-11"), FinishDate = DateTime.Parse("2025-12-15") },
+                new Exhibition { GalleryName = "Chirstchurch Gallery", City = "Christchurch", Zip = 1011, Country = "New Zealand", StartingDate = DateTime.Parse("2025-06-08"), FinishDate = DateTime.Parse("2025-06-14") },
                 new Exhibition { GalleryName = "Auckland Gallery", City = "Auckland", Zip = 1400, Country = "New Zealand", StartingDate = DateTime.Parse("2025-08-11"), FinishDate = DateTime.Parse("2025-08-14") },
                 new Exhibition { GalleryName = "Chirstchurch Gallery", City = "Chirstchurch", Zip = 1011, Country = "New Zealand", StartingDate = DateTime.Parse("2025-04-09"), FinishDate = DateTime.Parse("2025-04-15") },
                 new Exhibition { GalleryName = "Auckland Gallery", City = "Auckland", Zip = 1400, Country = "New Zealand", StartingDate = DateTime.Parse("2025-06-11"), FinishDate = DateTime.Parse("2025-06-12") },
