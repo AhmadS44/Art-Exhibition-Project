@@ -21,11 +21,22 @@ namespace Art_Exhibition_Project.Controllers
         }
 
         // GET: Arts
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            var context = _context.Art.Include(a => a.Artist);
-            return View(await context.ToListAsync());
+            ViewData["CurrentFilter"] = searchString;
+
+            var art = _context.Art.Include(a => a.Artist).AsQueryable();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                art = art.Where(a => a.Title.Contains(searchString));
+            }
+
+           
+            var artList = await art.ToListAsync();
+            return View(artList);
         }
+        
 
         // GET: Arts/Details/5
         public async Task<IActionResult> Details(int? id)
