@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Art_Exhibition_Project.Models.Art>
+﻿@using ArtExhibitionProject.Models
+@model PaginatedList<Art_Exhibition_Project.Models.Art>
 @inject SignInManager<Art_Exhibition_ProjectUser> SignInManager
 @inject UserManager<Art_Exhibition_ProjectUser> UserManager
 @using Microsoft.AspNetCore.Identity
@@ -28,16 +29,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Title</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                Price
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                Description
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Artist)
+                Artist
             </th>
             <th></th>
         </tr>
@@ -70,3 +71,31 @@
 }
     </tbody>
 </table>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<div class="pagination-container text-center mt-4">
+    <a class="page-link btn btn-default @prevDisabled d-inline-flex"
+       asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]">
+        Previous
+    </a>
+
+    <span class="page-link mx-2 d-inline-flex">
+        Page @Model.PageIndex of @Model.TotalPages
+    </span>
+
+    <a class="page-link btn btn-default @nextDisabled d-inline-flex"
+       asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]">
+        Next
+    </a>
+</div>
+
+

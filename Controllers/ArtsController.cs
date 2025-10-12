@@ -1,5 +1,6 @@
 ﻿using Art_Exhibition_Project;
 using Art_Exhibition_Project.Models;
+using ArtExhibitionProject.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -21,9 +22,24 @@ namespace Art_Exhibition_Project.Controllers
         }
 
         // GET: Arts
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(
+    string sortOrder,
+    string currentFilter,
+    string searchString,
+    int? pageNumber)
         {
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["CurrentFilter"] = searchString;
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
 
             var art = _context.Art.Include(a => a.Artist).AsQueryable();
 
@@ -32,10 +48,23 @@ namespace Art_Exhibition_Project.Controllers
                 art = art.Where(a => a.Title.Contains(searchString));
             }
 
-           
-            var artList = await art.ToListAsync();
-            return View(artList);
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    art = art.OrderByDescending(s => s.Title);
+                    break;
+                
+                default:
+                    art = art.OrderBy(s => s.Title);
+                    break;
+            }
+
+            int pageSize = 5;
+            return View(await PaginatedList<Art>.CreateAsync(art.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
+
+
+        
         
 
         // GET: Arts/Details/5
