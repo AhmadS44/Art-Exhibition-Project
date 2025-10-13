@@ -1,4 +1,5 @@
-﻿@inject SignInManager<Art_Exhibition_ProjectUser> SignInManager
+﻿
+@inject SignInManager<Art_Exhibition_ProjectUser> SignInManager
 @inject UserManager<Art_Exhibition_ProjectUser> UserManager
 @model IEnumerable<Art_Exhibition_Project.Models.Customer>
 @using Microsoft.AspNetCore.Identity
@@ -18,10 +19,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FirstName)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["FirstNameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">First Name</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LastName)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["LastNameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Last Name</a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Address)
@@ -84,3 +85,6 @@
 }
     </tbody>
 </table>
+
+
+

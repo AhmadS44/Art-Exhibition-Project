@@ -32,8 +32,8 @@ namespace Art_Exhibition_Project.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime FinishDate { get; set; }
-        public Art Art { get; set; }
-        public Customer Customer { get; set; }
+        public Art? Art { get; set; }
+        public Customer? Customer { get; set; }
 
     }
 }

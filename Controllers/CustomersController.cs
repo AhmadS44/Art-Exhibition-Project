@@ -1,5 +1,6 @@
 ﻿using Art_Exhibition_Project;
 using Art_Exhibition_Project.Models;
+using ArtExhibitionProject.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -22,11 +23,11 @@ namespace Art_Exhibition_Project.Controllers
         }
 
         // GET: Customers
-        public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter,int? pageNumber)
+        public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int? pageNumber)
         {
             ViewData["CurrentSort"] = sortOrder;
-            ViewData["FirstNameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "firstname_desc" : "firstname";
-            ViewData["LastNameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "lastname_desc" : "lastname";
+            ViewData["FirstNameSortParm"] = sortOrder == "firstname" ? "firstname_desc" : "firstname";
+            ViewData["LastNameSortParm"] = sortOrder == "lastname" ? "lastname_desc" : "lastname";
 
             if (searchString != null)
             {
@@ -38,33 +39,35 @@ namespace Art_Exhibition_Project.Controllers
             }
 
             ViewData["CurrentFilter"] = searchString;
-            var customers = from c in _context.Customer
-                            select c;
 
-            if (!string.IsNullOrEmpty(searchString))
+            var customers = _context.Customer.AsQueryable();
+
+            // Apply search filter
+            if (!String.IsNullOrEmpty(searchString))
             {
-                customers = customers.Where(s => s.Email.Contains(searchString));
+                customers = customers.Where(c => c.FirstName.Contains(searchString) || c.LastName.Contains(searchString));
             }
 
+            // Apply sorting
             switch (sortOrder)
             {
                 case "firstname_desc":
-                    customers = customers.OrderByDescending(s => s.FirstName);
+                    customers = customers.OrderByDescending(c => c.FirstName);
                     break;
                 case "lastname":
-                    customers = customers.OrderBy(s => s.LastName);
+                    customers = customers.OrderBy(c => c.LastName);
                     break;
                 case "lastname_desc":
-                    customers = customers.OrderByDescending(s => s.LastName);
+                    customers = customers.OrderByDescending(c => c.LastName);
                     break;
                 default:
-                    customers = customers.OrderBy(s => s.FirstName);
+                    customers = customers.OrderBy(c => c.FirstName);
                     break;
-
             }
-            //this is the pagination page size, so there will be 5 datas on each page//
+
+            // Pagination
             int pageSize = 5;
-            return View(await _context.Customer.ToListAsync());
+            return View(await PaginatedList<Customer>.CreateAsync(customers.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         // GET: Customers/Details/5

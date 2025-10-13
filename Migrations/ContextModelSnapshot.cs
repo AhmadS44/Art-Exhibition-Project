@@ -124,7 +124,7 @@ namespace Art_Exhibition_Project.Migrations
 
                     b.HasIndex("ArtistID");
 
-                    b.ToTable("Art");
+                    b.ToTable("Art", (string)null);
                 });
 
             modelBuilder.Entity("Art_Exhibition_Project.Models.Artist", b =>
@@ -168,7 +168,7 @@ namespace Art_Exhibition_Project.Migrations
 
                     b.HasKey("ArtistID");
 
-                    b.ToTable("Artist");
+                    b.ToTable("Artist", (string)null);
                 });
 
             modelBuilder.Entity("Art_Exhibition_Project.Models.Customer", b =>
@@ -216,7 +216,7 @@ namespace Art_Exhibition_Project.Migrations
 
                     b.HasKey("CustomerID");
 
-                    b.ToTable("Customer");
+                    b.ToTable("Customer", (string)null);
                 });
 
             modelBuilder.Entity("Art_Exhibition_Project.Models.Exhibition", b =>
@@ -253,7 +253,7 @@ namespace Art_Exhibition_Project.Migrations
 
                     b.HasKey("ExhibitionID");
 
-                    b.ToTable("Exhibition");
+                    b.ToTable("Exhibition", (string)null);
                 });
 
             modelBuilder.Entity("Art_Exhibition_Project.Models.PurchaseOrder", b =>
@@ -288,7 +288,7 @@ namespace Art_Exhibition_Project.Migrations
 
                     b.HasIndex("CustomerID");
 
-                    b.ToTable("PurchaseOrder");
+                    b.ToTable("PurchaseOrder", (string)null);
                 });
 
             modelBuilder.Entity("Art_Exhibition_Project.Models.Rental", b =>
@@ -320,7 +320,7 @@ namespace Art_Exhibition_Project.Migrations
 
                     b.HasIndex("CustomerID");
 
-                    b.ToTable("Rental");
+                    b.ToTable("Rental", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

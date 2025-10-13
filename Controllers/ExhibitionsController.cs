@@ -1,5 +1,6 @@
 ﻿using Art_Exhibition_Project;
 using Art_Exhibition_Project.Models;
+using ArtExhibitionProject.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -21,10 +22,49 @@ namespace Art_Exhibition_Project.Controllers
         }
 
         // GET: Exhibitions
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int? pageNumber)
         {
-            return View(await _context.Exhibition.ToListAsync());
+            // Set up sorting and filtering parameters
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["GalleryNameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "galleryname_desc" : "galleryname";
+
+           
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
+            // Start query for exhibitions
+            var exhibitions = _context.Exhibition.AsQueryable();
+
+            // Apply search filter (search by gallery name, city, or country)
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                exhibitions = exhibitions.Where(e => e.GalleryName.Contains(searchString) || e.City.Contains(searchString) || e.Country.Contains(searchString));
+            }
+
+            // Apply sorting
+            switch (sortOrder)
+            {
+                case "galleryname_desc":
+                    exhibitions = exhibitions.OrderByDescending(e => e.GalleryName);
+                    break;
+                default:
+                    exhibitions = exhibitions.OrderBy(e => e.GalleryName);
+                    break;
+            }
+
+            // Pagination
+            int pageSize = 5;
+            return View(await PaginatedList<Exhibition>.CreateAsync(exhibitions.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
+
 
         // GET: Exhibitions/Details/5
         public async Task<IActionResult> Details(int? id)

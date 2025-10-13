@@ -64,7 +64,11 @@ namespace Art_Exhibition_Project.Controllers
         [Authorize]
         public async Task<IActionResult> Create([Bind("PurchaseOrderID,ArtID,CustomerID,OrderCost,OrderDate,StartingDate,FinishDate")] PurchaseOrder purchaseOrder)
         {
-            if (!ModelState.IsValid)
+            if (purchaseOrder.StartingDate >= purchaseOrder.FinishDate)
+            {
+                ModelState.AddModelError("FinishDate", "Finish must be after starting date");
+            }
+            if (ModelState.IsValid)
             {
                 _context.Add(purchaseOrder);
                 await _context.SaveChangesAsync();
