@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Art_Exhibition_Project.Models.PurchaseOrder>
+﻿@using ArtExhibitionProject.Models
+@model PaginatedList<Art_Exhibition_Project.Models.PurchaseOrder>
 @inject SignInManager<Art_Exhibition_ProjectUser> SignInManager
 @inject UserManager<Art_Exhibition_ProjectUser> UserManager
 @using Microsoft.AspNetCore.Identity
@@ -13,26 +14,37 @@
 <p>
     <a class="btn btn-success" asp-action="Create">Create</a>
 </p>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            <label>Find by Cost: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" /></label>
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+
 <table class="table table-striped">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.OrderCost)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["OrderCostSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Order Cost</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OrderDate)
+                Order Date
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StartingDate)
+                Starting Date
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FinishDate)
+                Finish Date
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Art)
+                Art
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Customer)
+                Customer
             </th>
             <th></th>
         </tr>
@@ -71,3 +83,31 @@
 }
     </tbody>
 </table>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<div class="pagination-container text-center mt-4">
+    <a class="page-link btn btn-default @prevDisabled d-inline-flex"
+       asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]">
+        Previous
+    </a>
+
+    <span class="page-link mx-2 d-inline-flex">
+        Page @Model.PageIndex of @Model.TotalPages
+    </span>
+
+    <a class="page-link btn btn-default @nextDisabled d-inline-flex"
+       asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]">
+        Next
+    </a>
+</div>
+
+

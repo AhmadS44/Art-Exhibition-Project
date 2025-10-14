@@ -1,5 +1,6 @@
 ﻿using Art_Exhibition_Project;
 using Art_Exhibition_Project.Models;
+using ArtExhibitionProject.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -21,11 +22,59 @@ namespace Art_Exhibition_Project.Controllers
         }
 
         // GET: PurchaseOrders
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int? pageNumber)
         {
-            var context = _context.PurchaseOrder.Include(p => p.Art).Include(p => p.Customer);
-            return View(await context.ToListAsync());
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["OrderCostSortParm"] = sortOrder == "ordercost" ? "ordercost_desc" : "ordercost";
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
+            var purchaseorders = _context.PurchaseOrder
+                .Include(p => p.Art) 
+                .Include(p => p.Customer)  
+                .AsQueryable();
+
+            // Applies search filter
+            if (!string.IsNullOrEmpty(searchString))
+            {
+    
+                if (int.TryParse(searchString, out int parsedCost))
+                {
+                    purchaseorders = purchaseorders.Where(p => p.OrderCost == parsedCost);
+                }
+                else
+                {
+                   
+                    purchaseorders = purchaseorders.Where(p => false); // This will return no results if search is wrong
+                }
+            }
+
+            // Applies sorting based on OrderCost
+            switch (sortOrder)
+            {
+                case "ordercost_desc":
+                    purchaseorders = purchaseorders.OrderByDescending(p => p.OrderCost);
+                    break;
+                default:
+                    purchaseorders = purchaseorders.OrderBy(p => p.OrderCost);
+                    break;
+            }
+
+            // Pagination
+            int pageSize = 5;
+            return View(await PaginatedList<PurchaseOrder>.CreateAsync(purchaseorders.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
+
+
 
         // GET: PurchaseOrders/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -111,7 +160,12 @@ namespace Art_Exhibition_Project.Controllers
                 return NotFound();
             }
 
-            if (!ModelState.IsValid)
+            if (purchaseOrder.StartingDate >= purchaseOrder.FinishDate)
+            {
+                ModelState.AddModelError("FinishDate", "Finish must be after starting date");
+            }
+
+            if (ModelState.IsValid)
             {
                 try
                 {

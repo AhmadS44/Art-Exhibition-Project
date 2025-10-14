@@ -78,15 +78,15 @@ namespace Art_Exhibition_Project.Areas.Identity.Data
             var purchaseorders = new PurchaseOrder[]
           {
               new PurchaseOrder { ArtID = 1, CustomerID = 1, OrderCost = 100, OrderDate = DateTime.Parse("2025-10-11"), StartingDate = DateTime.Parse("2025-10-14"), FinishDate = DateTime.Parse("2025-10-18") },
-              new PurchaseOrder { ArtID = 2, CustomerID = 2, OrderCost = 2, OrderDate = DateTime.Parse("2025-06-10"), StartingDate = DateTime.Parse("2025-06-14"), FinishDate = DateTime.Parse("2025-06-16") },
-              new PurchaseOrder { ArtID = 3, CustomerID = 3, OrderCost = 3, OrderDate = DateTime.Parse("2025-08-02"), StartingDate = DateTime.Parse("2025-08-05"), FinishDate = DateTime.Parse("2025-08-08") },
-              new PurchaseOrder { ArtID = 4, CustomerID = 4, OrderCost = 4, OrderDate = DateTime.Parse("2025-06-08"), StartingDate = DateTime.Parse("2025-06-10"), FinishDate = DateTime.Parse("2025-06-14") },
-              new PurchaseOrder { ArtID = 5, CustomerID = 5, OrderCost = 5, OrderDate = DateTime.Parse("2025-01-01"), StartingDate = DateTime.Parse("2025-01-04"), FinishDate = DateTime.Parse("2025-01-08") },
+              new PurchaseOrder { ArtID = 2, CustomerID = 2, OrderCost = 20, OrderDate = DateTime.Parse("2025-06-10"), StartingDate = DateTime.Parse("2025-06-14"), FinishDate = DateTime.Parse("2025-06-16") },
+              new PurchaseOrder { ArtID = 3, CustomerID = 3, OrderCost = 40, OrderDate = DateTime.Parse("2025-08-02"), StartingDate = DateTime.Parse("2025-08-05"), FinishDate = DateTime.Parse("2025-08-08") },
+              new PurchaseOrder { ArtID = 4, CustomerID = 4, OrderCost = 55, OrderDate = DateTime.Parse("2025-06-08"), StartingDate = DateTime.Parse("2025-06-10"), FinishDate = DateTime.Parse("2025-06-14") },
+              new PurchaseOrder { ArtID = 5, CustomerID = 5, OrderCost = 25, OrderDate = DateTime.Parse("2025-01-01"), StartingDate = DateTime.Parse("2025-01-04"), FinishDate = DateTime.Parse("2025-01-08") },
               new PurchaseOrder { ArtID = 6, CustomerID = 6, OrderCost = 70, OrderDate = DateTime.Parse("2025-04-21"), StartingDate = DateTime.Parse("2025-04-23"), FinishDate = DateTime.Parse("2025-04-26") },
-              new PurchaseOrder { ArtID = 7, CustomerID = 7, OrderCost = 7, OrderDate = DateTime.Parse("2025-06-24"), StartingDate = DateTime.Parse("2025-06-28"), FinishDate = DateTime.Parse("2025-06-30") },
-              new PurchaseOrder { ArtID = 8, CustomerID = 8, OrderCost = 8, OrderDate = DateTime.Parse("2025-11-11"), StartingDate = DateTime.Parse("2025-11-14"), FinishDate = DateTime.Parse("2025-1-18") },
-              new PurchaseOrder { ArtID = 9, CustomerID = 9, OrderCost = 9, OrderDate = DateTime.Parse("2025-06-18"), StartingDate = DateTime.Parse("2025-06-22"), FinishDate = DateTime.Parse("2025-06-24") },
-              new PurchaseOrder { ArtID = 10, CustomerID = 10, OrderCost = 10, OrderDate = DateTime.Parse("2025-4-11"), StartingDate = DateTime.Parse("2025-04-14"), FinishDate = DateTime.Parse("2025-04-18") },
+              new PurchaseOrder { ArtID = 7, CustomerID = 7, OrderCost = 15, OrderDate = DateTime.Parse("2025-06-24"), StartingDate = DateTime.Parse("2025-06-28"), FinishDate = DateTime.Parse("2025-06-30") },
+              new PurchaseOrder { ArtID = 8, CustomerID = 8, OrderCost = 90, OrderDate = DateTime.Parse("2025-11-11"), StartingDate = DateTime.Parse("2025-11-14"), FinishDate = DateTime.Parse("2025-1-18") },
+              new PurchaseOrder { ArtID = 9, CustomerID = 9, OrderCost = 45, OrderDate = DateTime.Parse("2025-06-18"), StartingDate = DateTime.Parse("2025-06-22"), FinishDate = DateTime.Parse("2025-06-24") },
+              new PurchaseOrder { ArtID = 10, CustomerID = 10, OrderCost = 60, OrderDate = DateTime.Parse("2025-4-11"), StartingDate = DateTime.Parse("2025-04-14"), FinishDate = DateTime.Parse("2025-04-18") },
           };
             foreach (PurchaseOrder p in purchaseorders)
             {
@@ -98,16 +98,16 @@ namespace Art_Exhibition_Project.Areas.Identity.Data
 
             var rentals = new Rental[]
             {
-                new Rental { ArtID = 1, CustomerID = 1, RentalCost = 07, RentalDate = DateTime.Parse("2025-02-14"), RentalFinishDate = DateTime.Parse("2025-02-18") },
-                new Rental { ArtID = 2, CustomerID = 2, RentalCost = 07, RentalDate = DateTime.Parse("2025-03-13"), RentalFinishDate = DateTime.Parse("2025-03-17") },
-                new Rental { ArtID = 3, CustomerID = 3, RentalCost = 07, RentalDate = DateTime.Parse("2025-06-09"), RentalFinishDate = DateTime.Parse("2025-06-11") },
-                new Rental { ArtID = 4, CustomerID = 4, RentalCost = 07, RentalDate = DateTime.Parse("2025-07-21"), RentalFinishDate = DateTime.Parse("2025-07-24") },
-                new Rental { ArtID = 5, CustomerID = 5, RentalCost = 07, RentalDate = DateTime.Parse("2025-11-17"), RentalFinishDate = DateTime.Parse("2025-11-21") },
-                new Rental { ArtID = 6, CustomerID = 6, RentalCost = 07, RentalDate = DateTime.Parse("2025-05-02"), RentalFinishDate = DateTime.Parse("2025-05-05") },
-                new Rental { ArtID = 7, CustomerID = 7, RentalCost = 07, RentalDate = DateTime.Parse("2025-01-18"), RentalFinishDate = DateTime.Parse("2025-01-21") },
-                new Rental { ArtID = 8, CustomerID = 8, RentalCost = 07, RentalDate = DateTime.Parse("2025-01-17"), RentalFinishDate = DateTime.Parse("2025-01-20") },
-                new Rental { ArtID = 9, CustomerID = 9, RentalCost = 07, RentalDate = DateTime.Parse("2025-02-12"), RentalFinishDate = DateTime.Parse("2025-02-16") },
-                new Rental { ArtID = 10, CustomerID = 10, RentalCost = 07, RentalDate = DateTime.Parse("2025-04-06"), RentalFinishDate = DateTime.Parse("2025-04-11") },
+                new Rental { ArtID = 1, CustomerID = 1, RentalCost = 100, RentalDate = DateTime.Parse("2025-02-14"), RentalFinishDate = DateTime.Parse("2025-02-18") },
+                new Rental { ArtID = 2, CustomerID = 2, RentalCost = 150, RentalDate = DateTime.Parse("2025-03-13"), RentalFinishDate = DateTime.Parse("2025-03-17") },
+                new Rental { ArtID = 3, CustomerID = 3, RentalCost = 400, RentalDate = DateTime.Parse("2025-06-09"), RentalFinishDate = DateTime.Parse("2025-06-11") },
+                new Rental { ArtID = 4, CustomerID = 4, RentalCost = 350, RentalDate = DateTime.Parse("2025-07-21"), RentalFinishDate = DateTime.Parse("2025-07-24") },
+                new Rental { ArtID = 5, CustomerID = 5, RentalCost = 200, RentalDate = DateTime.Parse("2025-11-17"), RentalFinishDate = DateTime.Parse("2025-11-21") },
+                new Rental { ArtID = 6, CustomerID = 6, RentalCost = 250, RentalDate = DateTime.Parse("2025-05-02"), RentalFinishDate = DateTime.Parse("2025-05-05") },
+                new Rental { ArtID = 7, CustomerID = 7, RentalCost = 100, RentalDate = DateTime.Parse("2025-01-18"), RentalFinishDate = DateTime.Parse("2025-01-21") },
+                new Rental { ArtID = 8, CustomerID = 8, RentalCost = 450, RentalDate = DateTime.Parse("2025-01-17"), RentalFinishDate = DateTime.Parse("2025-01-20") },
+                new Rental { ArtID = 9, CustomerID = 9, RentalCost = 400, RentalDate = DateTime.Parse("2025-02-12"), RentalFinishDate = DateTime.Parse("2025-02-16") },
+                new Rental { ArtID = 10, CustomerID = 10, RentalCost = 350, RentalDate = DateTime.Parse("2025-04-06"), RentalFinishDate = DateTime.Parse("2025-04-11") },
             };
             foreach (Rental r in rentals)
             {

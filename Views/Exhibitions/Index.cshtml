@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Art_Exhibition_Project.Models.Exhibition>
+﻿@using ArtExhibitionProject.Models
+@model PaginatedList<Art_Exhibition_Project.Models.Exhibition>
 @using Microsoft.AspNetCore.Identity
 @using Art_Exhibition_Project.Areas.Identity.Data
 @inject SignInManager<Art_Exhibition_ProjectUser> SignInManager
@@ -17,22 +18,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.GalleryName)
+                Gallery Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.City)
+                City
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Zip)
+                Zip
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Country)
+                Country
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StartingDate)
+                Starting Date
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FinishDate)
+                Finish Date
             </th>
             <th></th>
         </tr>
@@ -71,3 +72,30 @@
 }
     </tbody>
 </table>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<div class="pagination-container text-center mt-4">
+    <a class="page-link btn btn-default @prevDisabled d-inline-flex"
+       asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]">
+        Previous
+    </a>
+
+    <span class="page-link mx-2 d-inline-flex">
+        Page @Model.PageIndex of @Model.TotalPages
+    </span>
+
+    <a class="page-link btn btn-default @nextDisabled d-inline-flex"
+       asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]">
+        Next
+    </a>
+</div>
+

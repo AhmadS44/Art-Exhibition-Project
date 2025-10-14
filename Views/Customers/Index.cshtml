@@ -1,7 +1,7 @@
-﻿
+﻿@using ArtExhibitionProject.Models
 @inject SignInManager<Art_Exhibition_ProjectUser> SignInManager
 @inject UserManager<Art_Exhibition_ProjectUser> UserManager
-@model IEnumerable<Art_Exhibition_Project.Models.Customer>
+@model PaginatedList<Art_Exhibition_Project.Models.Customer>
 @using Microsoft.AspNetCore.Identity
 @using Art_Exhibition_Project.Areas.Identity.Data
 
@@ -15,6 +15,17 @@
 <p>
     <a class="btn btn-success" asp-action="Create">Create</a>
 </p>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            <label>Find by Name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" /></label>
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -25,22 +36,22 @@
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["LastNameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Last Name</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Address)
+                Address
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.City)
+                City
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Zip)
+                Zip
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Country)
+                Country
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
+                PhoneNumber
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                Email
             </th>
             <th></th>
         </tr>
@@ -85,6 +96,34 @@
 }
     </tbody>
 </table>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<div class="pagination-container text-center mt-4">
+    <a class="page-link btn btn-default @prevDisabled d-inline-flex"
+       asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]">
+        Previous
+    </a>
+
+    <span class="page-link mx-2 d-inline-flex">
+        Page @Model.PageIndex of @Model.TotalPages
+    </span>
+
+    <a class="page-link btn btn-default @nextDisabled d-inline-flex"
+       asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]">
+        Next
+    </a>
+</div>
+
+
 
 
 

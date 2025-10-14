@@ -24,11 +24,9 @@ namespace Art_Exhibition_Project.Controllers
         // GET: Exhibitions
         public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int? pageNumber)
         {
-            // Set up sorting and filtering parameters
             ViewData["CurrentSort"] = sortOrder;
-            ViewData["GalleryNameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "galleryname_desc" : "galleryname";
+            ViewData["GalleryNameSortParm"] = sortOrder == "galleryname" ? "galleryname_desc" : "galleryname";
 
-           
             if (searchString != null)
             {
                 pageNumber = 1;
@@ -40,13 +38,12 @@ namespace Art_Exhibition_Project.Controllers
 
             ViewData["CurrentFilter"] = searchString;
 
-            // Start query for exhibitions
             var exhibitions = _context.Exhibition.AsQueryable();
 
-            // Apply search filter (search by gallery name, city, or country)
+            // Apply search filter
             if (!string.IsNullOrEmpty(searchString))
             {
-                exhibitions = exhibitions.Where(e => e.GalleryName.Contains(searchString) || e.City.Contains(searchString) || e.Country.Contains(searchString));
+                exhibitions = exhibitions.Where(e => e.GalleryName.Contains(searchString));
             }
 
             // Apply sorting
@@ -64,6 +61,8 @@ namespace Art_Exhibition_Project.Controllers
             int pageSize = 5;
             return View(await PaginatedList<Exhibition>.CreateAsync(exhibitions.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
+
+
 
 
         // GET: Exhibitions/Details/5
