@@ -36,7 +36,7 @@ namespace Art_Exhibition_Project.Areas.Identity.Data
 
             var artists = new Artist[]
              {
-                 new Artist { FirstName = "Lickhit", LastName = "Pate;", Address = "16 Country Road", City = "Auckland", Zip = 1600, Country = "New Zealand", PhoneNumber = 0211827164 },
+                 new Artist { FirstName = "Lickhit", LastName = "Patel", Address = "16 Country Road", City = "Auckland", Zip = 1600, Country = "New Zealand", PhoneNumber = 0211827164 },
                  new Artist { FirstName = "Albert", LastName = "Einstein", Address = "92 New Street", City = "Chirstchurch", Zip = 4200, Country = "New Zealand", PhoneNumber = 0216427162 },
                  new Artist { FirstName = "Mike", LastName = "Tyson", Address = "3 Country Road", City = "Auckland", Zip = 1600, Country = "New Zealand", PhoneNumber = 0219182736 },
                  new Artist { FirstName = "Silver", LastName = "Johnothan", Address = "5 Willow Road Road", City = "Hamilton", Zip = 1200, Country = "New Zealand", PhoneNumber = 0219173728 },

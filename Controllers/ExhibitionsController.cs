@@ -98,7 +98,12 @@ namespace Art_Exhibition_Project.Controllers
         [Authorize]
         public async Task<IActionResult> Create([Bind("ExhibitionID,GalleryName,City,Zip,Country,StartingDate,FinishDate")] Exhibition exhibition)
         {
-            if (!ModelState.IsValid)
+            if (exhibition.StartingDate >= exhibition.FinishDate)
+            {
+                ModelState.AddModelError("FinishDate", "Finish must be after starting date");
+            }
+
+            if (ModelState.IsValid)
             {
                 _context.Add(exhibition);
                 await _context.SaveChangesAsync();
@@ -137,7 +142,12 @@ namespace Art_Exhibition_Project.Controllers
                 return NotFound();
             }
 
-            if (!ModelState.IsValid)
+            if (exhibition.StartingDate >= exhibition.FinishDate)
+            {
+                ModelState.AddModelError("FinishDate", "Finish must be after starting date");
+            }
+
+            if (ModelState.IsValid)
             {
                 try
                 {

@@ -27,12 +27,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="RentalDate" class="control-label"></label>
-                <input asp-for="RentalDate" class="form-control" />
+                <input asp-for="RentalDate" class="form-control" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" />
                 <span asp-validation-for="RentalDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="RentalFinishDate" class="control-label"></label>
-                <input asp-for="RentalFinishDate" class="form-control" />
+                <input asp-for="RentalFinishDate" class="form-control" type="date" min="@DateTime.Now.AddDays(1).ToString("yyyy-MM-dd")" />
                 <span asp-validation-for="RentalFinishDate" class="text-danger"></span>
             </div>
             <div class="form-group">

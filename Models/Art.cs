@@ -14,7 +14,7 @@ namespace Art_Exhibition_Project.Models
 
         //price of the art piece has to be between $5 - $5000//
         [Required]
-        [Range(10, 1000, ErrorMessage = "Please enter a vaild rental cost ($5 - $5000)")]
+        [Range(10, 1000, ErrorMessage = "Please enter a vaild cost ($5 - $5000)")]
         [Display(Name = "ArtPrice")]
         public int Price { get; set; }
 
