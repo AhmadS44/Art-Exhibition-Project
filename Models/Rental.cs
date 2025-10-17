@@ -10,7 +10,7 @@ namespace Art_Exhibition_Project.Models
 
         //price of the rental has to be between $100 - $500//
         [Required]
-        [Range(10, 1000, ErrorMessage = "Please enter a vaild rental cost ($100 - $500)")]
+        [Range(10, 1000, ErrorMessage = "Please enter a vaild rental cost ($10 - $1000)")]
         [Display(Name = "RentalCost")]
         public int RentalCost { get; set; }
 

@@ -14,13 +14,13 @@ namespace Art_Exhibition_Project.Models
 
         //price of the art piece has to be between $5 - $5000//
         [Required]
-        [Range(10, 1000, ErrorMessage = "Please enter a vaild cost ($5 - $5000)")]
+        [Range(10, 1000, ErrorMessage = "Please enter a vaild cost ($10 - $1000)")]
         [Display(Name = "ArtPrice")]
         public int Price { get; set; }
 
         //discreption of the art piece//
         [Required(ErrorMessage = "Description is required")]
-        [StringLength(150, MinimumLength = 5, ErrorMessage = "Description must be between 35 and 150 characters")]
+        [StringLength(150, MinimumLength = 5, ErrorMessage = "Description must be between 5 and 150 characters")]
         public string Description { get; set; }
         
         public Artist Artist { get; set; }
