@@ -1,0 +1,1 @@
+﻿SELECT * FROM PurchaseOrder WHERE OrderCost BETWEEN 50 AND 100;
