@@ -55,9 +55,8 @@
         </dd>
     </dl>
 
-    <form method="post" asp-action="DeleteConfirmed" asp-route-id="@Model.ArtistID">
-        <input type="hidden" asp-for="ArtistID" />
+    <form method="post" asp-action="Delete" asp-route-id="@Model.ArtistID">
+
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index" class="btn btn-secondary">Back to List</a>
     </form>
-</div>
